@@ -5,15 +5,13 @@ const stateSlice = createSlice({
   initialState: { searchTerm: null, currentPage: 1 },
   reducers: {
     setSearchTerm: (state, action) => {
-      state.term = action.payload;
-      console.log(action.payload);
+      state.searchTerm = action.payload;
     },
     clearSearchTerm: (state) => {
-      state.term = null;
+      state.searchTerm = null;
     },
     incrementCurrentPage: (state) => {
       state.currentPage += 1;
-      console.log(state.currentPage);
     },
     decrementCurrentPage: (state) => {
       state.currentPage -= 1;

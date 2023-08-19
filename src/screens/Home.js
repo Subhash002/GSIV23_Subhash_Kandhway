@@ -7,11 +7,12 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearSearchTerm,
   decrementCurrentPage,
   incrementCurrentPage,
 } from "../services/stateSlice";
 
-const Home = ({ setSearchTerm }) => {
+const Home = () => {
   const dispatch = useDispatch();
   const { searchTerm, currentPage } = useSelector((state) => state.stateSlice);
   const {
@@ -29,7 +30,7 @@ const Home = ({ setSearchTerm }) => {
   const isLoading = searchTerm ? searchLoading : upcomingLoading;
   const isError = searchTerm ? searchError : upcomingError;
   const handleGoBack = () => {
-    setSearchTerm(null);
+    dispatch(clearSearchTerm());
   };
   // Function to go to the next page
   const nextPage = () => {
