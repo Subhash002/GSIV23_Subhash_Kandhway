@@ -2,13 +2,15 @@ import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
 const MovieList = ({ movies, isError, isLoading }) => {
-  const { results } = !isLoading && movies;
-
+  let results;
+  if (!isLoading && movies) {
+    results = movies.results;
+  }
   if (isError) {
-    <h1>There is an error fetching the data</h1>;
+    return <h1>There is an error fetching the data</h1>;
   }
   if (isLoading || !movies) {
-    <h1>Loading...</h1>;
+    return <div className="loading"></div>;
   }
   return (
     <div className="movie-list">

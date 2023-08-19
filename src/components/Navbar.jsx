@@ -3,8 +3,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setSearchTerm } from "../services/stateSlice";
 
-const Navbar = ({ setSearchTerm }) => {
+const Navbar = () => {
   const dispatch = useDispatch();
   const searchRef = useRef(null);
   const { pathname } = useLocation();
