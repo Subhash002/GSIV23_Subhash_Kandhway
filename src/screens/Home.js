@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { Movies } from "../components";
 import {
   useGetUpcomingMoviesQuery,
   useSearchMoviesQuery,
 } from "../services/movieAPISlice";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrementCurrentPage,
+  incrementCurrentPage,
+} from "../services/stateSlice";
 
-const Home = ({ searchTerm, setSearchTerm }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Home = ({ setSearchTerm }) => {
+  const dispatch = useDispatch();
+  const { searchTerm, currentPage } = useSelector((state) => state.stateSlice);
   const {
     data: upcomingMovies,
     isLoading: upcomingLoading,
@@ -28,15 +34,14 @@ const Home = ({ searchTerm, setSearchTerm }) => {
   // Function to go to the next page
   const nextPage = () => {
     if (currentPage < moviesData?.total_pages) {
-      // Replace 50 with the actual number of pages
-      setCurrentPage((prevPage) => prevPage + 1);
+      dispatch(incrementCurrentPage());
     }
   };
 
   // Function to go to the previous page
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
+      dispatch(decrementCurrentPage());
     }
   };
   return searchLoading || upcomingLoading ? (

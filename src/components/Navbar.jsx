@@ -2,14 +2,16 @@ import { useRef } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Navbar = ({ setSearchTerm }) => {
+  const dispatch = useDispatch();
   const searchRef = useRef(null);
   const { pathname } = useLocation();
   console.log(pathname);
   const onEnterInput = (event) => {
     if (event.key === "Enter") {
-      setSearchTerm(searchRef.current.value);
+      dispatch(setSearchTerm(searchRef.current.value));
       searchRef.current.value = "";
     }
   };

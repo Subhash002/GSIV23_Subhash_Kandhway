@@ -1,18 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-// Or from '@reduxjs/toolkit/query/react'
+
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { movieAPI } from "./services/movieAPISlice";
-
+import stateSliceReducer from "./services/stateSlice";
 export const store = configureStore({
   reducer: {
     [movieAPI.reducerPath]: movieAPI.reducer,
+    stateSlice: stateSliceReducer.reducer,
   },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(movieAPI.middleware),
 });
 
-// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
-// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
+
 setupListeners(store.dispatch);
