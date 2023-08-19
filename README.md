@@ -1,10 +1,10 @@
 # Movie App
 
-This is a Movie App that uses various technologies and libraries for development.
+This is a Movie App that utilizes various technologies and libraries for development.
 
 ## Libraries and Dependencies
 
-The following libraries and dependencies are used in this project:
+The project relies on the following libraries and dependencies:
 
 - `@emotion/react`: ^11.11.1
 - `@emotion/styled`: ^11.11.0
@@ -55,5 +55,13 @@ The MovieDB API is used to fetch movie information.
 1. Clone the repository.
 2. Install dependencies using `npm install`.
 3. Run the app using `npm start`.
+
+#### What I've Done Well
+
+I have effectively utilized Redux for streamlined state management, enhancing the overall user experience.
+
+#### Future Enhancements
+
+Given more time, I plan to implement the 'add to favorites' functionality, further enriching user engagement.
 
 Enjoy exploring and interacting with the Movie App!
