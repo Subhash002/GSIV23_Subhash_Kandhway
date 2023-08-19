@@ -122,7 +122,16 @@ a {
     width: 95vw;
   }
 }
+@media screen and (max-width: 512px) {
+  body {
+    font-size: 14px;
+  }
 
+    .section {
+      width: 90vw;
+  
+    }
+    }
 /*
 =============== 
 Search
