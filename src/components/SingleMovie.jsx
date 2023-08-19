@@ -3,6 +3,7 @@ import {
   useGetCreditsByIdQuery,
   useGetMovieByIdQuery,
 } from "../services/movieAPISlice";
+import { toHoursAndMinutes } from "../utils/timeFormatter";
 
 const SingleMovie = () => {
   const { id } = useParams();
@@ -41,7 +42,7 @@ const SingleMovie = () => {
         </h2>
         <p className="movie-year-length-director-label">
           {new Date(movie?.release_date).getFullYear()} | Length:{" "}
-          {movie?.runtime} mins | Directors: {crews?.join(", ")}
+          {toHoursAndMinutes(movie?.runtime)} | Directors: {crews?.join(", ")}
         </p>
         <p className="movie-cast-label">Casts: {casts?.join(", ")}</p>
         <p className="movie-description-label">
